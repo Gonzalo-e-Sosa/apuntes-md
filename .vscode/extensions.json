@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "svelte.svelte-vscode",
+    "YoavBls.pretty-ts-errors",
+    "unifiedjs.vscode-mdx",
+    "YoavBls.pretty-ts-errors"
+  ],
+  "unwantedRecommendations": []
+}

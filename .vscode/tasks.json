@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "label": "pnpm: dev",
+      "detail": "astro dev"
+    },
+    {
+      "type": "npm",
+      "script": "astro",
+      "problemMatcher": [],
+      "label": "pnpm: astro",
+      "detail": "astro"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "pnpm: build",
+      "detail": "astro check && astro build"
+    },
+    {
+      "type": "npm",
+      "script": "install",
+      "group": "none",
+      "problemMatcher": [],
+      "label": "pnpm: install",
+      "detail": "install dependencies from package"
+    },
+    {
+      "type": "npm",
+      "script": "preview",
+      "problemMatcher": [],
+      "label": "pnpm: preview",
+      "detail": "astro preview"
+    }
+  ]
+}
