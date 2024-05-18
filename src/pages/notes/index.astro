@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "apuntes";
+const description = "Últimos artículos.";
+const permalink = `${Astro.site?.href ?? "localhost:4321/"}notes`;
+
+let allPosts = await Astro.glob("../../data/notes-posts/*.md");
+allPosts = allPosts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf(),
+);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  permalink={permalink}
+  current="notes"
+>
+  <div class="container">
+    <h1>Apuntes</h1>
+    {
+      allPosts.map((post, index) => {
+        const href = `/notes/${post.file.split("/").pop()?.split(".").shift()}`;
+        return (
+          <Fragment>
+            {index !== 0 && <hr />}
+            <section>
+              <article class="post-item">
+                <h2>
+                  <a href={href}>{post.frontmatter.title}</a>
+                </h2>
+                <p>{post.frontmatter.description}</p>
+                <footer class="post-item-footer">
+                  <time class="post-item-date">
+                    — {post.frontmatter.publishDate}
+                  </time>
+                </footer>
+              </article>
+            </section>
+          </Fragment>
+        );
+      })
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  h2,
+  .post-item-footer {
+    font-family: var(--font-family-sans);
+    font-weight: 700;
+  }
+
+  .post-item-date {
+    color: var(--text-secondary);
+    text-align: left;
+    text-transform: uppercase;
+    margin-right: 16px;
+  }
+
+  hr {
+    margin: 60px auto;
+  }
+</style>
